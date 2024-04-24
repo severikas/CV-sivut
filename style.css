@@ -79,7 +79,7 @@ h6 {
   z-index: 9997;
   transition: all 0.5s;
   padding: 0 15px;
-  background: #040b14;
+  background: #b81f1f;
   overflow-y: auto;
 }
 
@@ -334,7 +334,7 @@ section {
   display: block;
   width: 50px;
   height: 3px;
-  background: #149ddd;
+  background: #021c28;
   bottom: 0;
   left: 0;
 }
@@ -349,7 +349,7 @@ section {
 .about .content h3 {
   font-weight: 700;
   font-size: 26px;
-  color: #173b6c;
+  color: #071220;
 }
 
 .about .content ul {
@@ -426,7 +426,7 @@ section {
 }
 
 .facts .count-box a:hover {
-  color: #1f5297;
+  color: #003d93;
 }
 
 /*--------------------------------------------------------------
@@ -455,7 +455,7 @@ section {
 }
 
 .skills .progress-bar-wrap {
-  background: #dce8f8;
+  background: #7bb4ff;
   height: 10px;
 }
 
@@ -599,7 +599,7 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-links a {
-  color: #fff;
+  color: #471010;
   font-size: 28px;
   text-align: center;
   background: rgba(20, 157, 221, 0.75);
