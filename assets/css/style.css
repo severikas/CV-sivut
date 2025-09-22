@@ -1116,7 +1116,8 @@ img[src="mersu.jpg"],
 img[src="mersu2.jpg"],
 img[src="naama.jpg"],
 img[src="severi_naama.jpg"] {
-  width: 200px;         /* pienempi leveys */
-  display: block;       /* estää rivillä olemisen */
-  margin: 20px auto;    /* keskittää vaakasuunnassa ja antaa ylä- ja alareunaan tilaa */
+  max-width: 70%;       /* ei koskaan leveämpi kuin 90% näytöstä */
+  height: auto;         /* säilyttää mittasuhteet */
+  display: block;       /* rivin katkaisu ja mahdollistaa keskityksen */
+  margin: 20px auto; 
 }
