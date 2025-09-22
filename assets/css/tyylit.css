@@ -1,0 +1,18 @@
+/* Skaalautuvat ja keskitetyt kuvat */
+
+img[src="Amg.jpg"],
+img[src="Bemari.jpg"],
+img[src="Kalakuva.jpg"],
+img[src="Pesu.jpg"],
+img[src="kachow.jpg"],
+img[src="kalaretki.jpg"],
+img[src="kaverikuva.JPG"],
+img[src="mersu.jpg"],
+img[src="mersu2.jpg"],
+img[src="naama.jpg"],
+img[src="severi_naama.jpg"] {
+  max-width: 90%;       /* ei koskaan leveämpi kuin 90% näytöstä */
+  height: auto;         /* säilyttää mittasuhteet */
+  display: block;       /* rivin katkaisu ja mahdollistaa keskityksen */
+  margin: 20px auto;    /* keskitys vaakasuunnassa ja tilaa ylä- ja alapuolelle */
+}
