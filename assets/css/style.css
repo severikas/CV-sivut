@@ -239,16 +239,31 @@ h6 {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
-  width: 10%;
-  height: 100vh;
-  background: url("../img/hero.jpg") center;
-  background-size: cover;
+  width: 100%;
+  height: 55vh; /* slightly shorter to better frame the car */
+  position: relative;
+  overflow: hidden; /* contain the absolutely positioned image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* hero image placed as an <img> for object-fit control */
+.hero-bg-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%; /* moved higher to show more upper area */
+  z-index: 0;
 }
 
 #hero:before {
   content: "";
   background: rgba(5, 13, 24, 0.3);
-  position: center;
+  position: absolute;
   bottom: 0;
   top: 0;
   left: 0;
@@ -257,9 +272,10 @@ h6 {
 }
 
 #hero .hero-container {
-  position: center;
+  position: relative;
   z-index: 2;
   min-width: 200px;
+  text-align: center;
 }
 
 #hero h1 {
@@ -267,31 +283,44 @@ h6 {
   font-size: 64px;
   font-weight: 700;
   line-height: 56px;
-  color: #000000;
+  color: #ffffff;
 }
 
 #hero p {
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 50px;
   font-size: 26px;
   font-family: "Poppins", sans-serif;
 }
 
 #hero p span {
-  color: #050505;
+  color: #ffffff;
   padding-bottom: 4px;
   letter-spacing: 1px;
-  border-bottom: 3px solid #ffffff;
+  border-bottom: 3px solid rgba(255,255,255,0.15);
 }
 
 
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
+  height: 48vh; /* slightly shorter on large screens to keep car visible */
+  background-position: center 90%; /* further lower focal point on large screens */
+  }
+  .hero-bg-img {
+  object-position: center 25%; /* higher on large screens */
   }
 }
 
 @media (max-width: 768px) {
+  #hero {
+    /* lower focal point on small screens */
+    height: 50vh; /* slightly taller on mobile to show more of the car */
+    background-attachment: scroll; /* avoid parallax on mobile */
+  }
+  .hero-bg-img {
+  object-position: center 35%; /* higher on mobile */
+  }
   #hero h1 {
     font-size: 28px;
     line-height: 36px;
@@ -342,6 +371,50 @@ section {
 
 .section-title p {
   margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+  Portfolio layout: smaller thumbnails, side-by-side using CSS grid
+--------------------------------------------------------------*/
+.portfolio-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* three columns on desktop */
+  gap: 12px; /* smaller gaps */
+  align-items: start;
+}
+
+.portfolio-item {
+  padding: 0; /* remove extra spacing from bootstrap columns */
+}
+
+.portfolio-wrap {
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.portfolio-wrap img {
+  width: 100%;
+  height: 770px; /* increased: about 2x taller */
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 992px) {
+  .portfolio-container {
+    grid-template-columns: repeat(2, 1fr); /* two columns on tablet */
+  }
+  .portfolio-wrap img {
+    height: 260px;
+  }
+}
+
+@media (max-width: 576px) {
+  .portfolio-container {
+    grid-template-columns: 1fr; /* one column on small phones */
+  }
+  .portfolio-wrap img {
+    height: 360px; /* a bit taller for single column */
+  }
 }
 
 /*--------------------------------------------------------------

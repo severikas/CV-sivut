@@ -148,16 +148,45 @@
    */
   let skilsContent = select('.skills-content');
   if (skilsContent) {
-    new Waypoint({
-      element: skilsContent,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
-        });
-      }
-    })
+    // function that sets progress-bar widths based on aria-valuenow
+    const animateSkills = () => {
+      let progress = select('.progress .progress-bar', true);
+      if (!progress) return;
+      progress.forEach((el) => {
+        const val = el.getAttribute('aria-valuenow') || el.getAttribute('data-valuenow') || el.dataset.value;
+        if (val) el.style.width = val + '%';
+      });
+    }
+
+    // Preferred: use Waypoint if available (existing template), otherwise use IntersectionObserver
+    if (typeof Waypoint !== 'undefined') {
+      new Waypoint({
+        element: skilsContent,
+        offset: '80%',
+        handler: function(direction) {
+          animateSkills();
+        }
+      })
+    } else if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateSkills();
+            observer.disconnect();
+          }
+        })
+      }, { threshold: 0.25 });
+      io.observe(skilsContent);
+    } else {
+      // fallback: animate on load and on scroll
+      window.addEventListener('load', animateSkills);
+      window.addEventListener('scroll', function onScroll() {
+        if (skilsContent.getBoundingClientRect().top <= window.innerHeight) {
+          animateSkills();
+          window.removeEventListener('scroll', onScroll);
+        }
+      });
+    }
   }
 
   /**
