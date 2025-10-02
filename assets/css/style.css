@@ -1,3 +1,11 @@
+@media (max-width: 768px) {
+  #header {
+    display: none !important;
+  }
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+}
 /**
 * Template Name: iPortfolio
 * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
