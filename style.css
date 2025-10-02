@@ -235,6 +235,17 @@ h6 {
   left: 0;
 }
 
+/* Piilota vasen menu mobiilissa, näytä vain kun mobile-nav-active */
+@media (max-width: 768px) {
+  #header {
+    left: -300px;
+    transition: left 0.4s;
+  }
+  .mobile-nav-active #header {
+    left: 0;
+  }
+}
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
